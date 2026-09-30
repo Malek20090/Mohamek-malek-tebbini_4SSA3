@@ -4,11 +4,15 @@ import jakarta.persistence.*;
 import lombok.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.List;
+
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+
+
 public class Agence {
 
     @Id
@@ -18,5 +22,11 @@ public class Agence {
     private String ville;
     private String adresse;
     private String telephone;
+
+    @OneToMany(mappedBy = "agence")
+    private List<Vehicule> vehicules;
+
+    @OneToMany(mappedBy = "agence")
+    private List<Employe> employes;
 
 }
